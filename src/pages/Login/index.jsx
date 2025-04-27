@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../config.js';
 import { Link, useNavigate } from 'react-router-dom';
+import './style.css'
+
 
 const Login = () => {
 const [email, setEmail] = useState("");
@@ -18,17 +20,14 @@ signInWithEmailAndPassword(auth, email, password).then(() => {
 }).catch((err) => {
     alert(err.message)
 })
-
-
 }
-
 
 
   return (
     <div>
-        <h1>Login</h1>
-
     <form>
+    <h1 >Login</h1>
+    <br />
         <input type="text" placeholder='Email' value={email} 
         onChange={(e) => {setEmail(e.target.value);}}/> 
         <br /><br />
@@ -36,7 +35,8 @@ signInWithEmailAndPassword(auth, email, password).then(() => {
         onChange={(e) => {setPassword(e.target.value);}}/> 
         <br /><br />
         <p>Don't have an account? <Link to={"/signup"}>Signup</Link></p>
-        <button onClick={handleLogin}>Login</button>
+        <br /><br />
+        <button  onClick={handleLogin}>Login</button>
     </form>
 
 
